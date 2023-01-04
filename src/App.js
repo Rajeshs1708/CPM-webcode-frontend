@@ -6,21 +6,16 @@ import UpdateEmployee from './EmployeeComponents/UpdateEmployee';
 import NavBar from './EmployeeComponents/Navbar';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
-
-//Router, Routes, Route
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
-import Signup from './LandingPages.js/Signup';
-import Signin from './LandingPages.js/Signin';
+import Signup from './LandingPages/Signup';
+import Signin from './LandingPages/Signin';
 import { useState } from 'react';
 import UserHomePage from './UserRequest/UserHomePage';
 import Pricing from './Pricing';
 import CreateLeads from './Leads/CreateLeads';
 import LeadsList from './Leads/LeadsList';
 import UpdateLead from './Leads/UpdateLead';
-
-
-
 
 function App() {
   const [user, setLoginUser] = useState({})

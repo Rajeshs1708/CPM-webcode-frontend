@@ -31,7 +31,7 @@ const Signin = ({setLoginUser}) => {
         e.preventDefault();
         const newUser = { ...user };
         try {
-                const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/signin`, newUser);
+                const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/signin`, newUser);
                 console.log("response:",response.data);
                 if (response) {
                     alert(response.data.message)

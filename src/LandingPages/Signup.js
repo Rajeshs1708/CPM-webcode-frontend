@@ -51,8 +51,9 @@ const Signup = () => {
         try {
             const { firstName, lastName, email, password, role } = user;
             if (firstName && lastName && email && password) {
-                axios.post(`${process.env.REACT_APP_BASE_URL}/signup`, user)
-                    .then(res => notifySuccess(res.data.message)).catch(err => alert(err.data.message))
+                axios.post(`${process.env.REACT_APP_BASE_URL}/api/signup`, user)
+                    .then(res => notifySuccess(res.data.message))
+                    .catch(err => alert(err.data.message))
 
                 navigate('/signin')
             } else {
