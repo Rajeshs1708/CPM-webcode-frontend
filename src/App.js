@@ -26,15 +26,12 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/forgetPassword" element={<ForgetPassword />} />
-          <Route exact path="/newPassword" element={<NewPassword />} />
-          <Route exact path="/signin" element={<Signin setLoginUser={setLoginUser} />} />
-        </Routes>
-        <div className='MainComponent'>
-          <Routes>
-            {/* admin route */}
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/signup" element={<Signup />} />
+            <Route exact path="/forgetPassword" element={<ForgetPassword />} />
+            <Route exact path="/newPassword" element={<NewPassword />} />
+            <Route exact path="/signin" element={<Signin setLoginUser={setLoginUser} />} />
+
             <Route path="/employee/navbar" element={user.role == 1 ? <NavBar setLoginUser={setLoginUser} /> :<UserHomePage setLoginUser={setLoginUser}/>} />
             <Route exact path="/pricing" element={<Pricing />} />
             <Route exact path="/lead/create" element={<CreateLeads />} />
@@ -45,8 +42,6 @@ function App() {
             <Route path="/employee/create" element={<CreateEmployee />} />
             <Route path="/employee/update/:id" element={<UpdateEmployee />} />
           </Routes>
-          {/* User route */}
-        </div>
       </div>
     </Router>
   );

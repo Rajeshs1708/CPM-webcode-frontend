@@ -18,7 +18,7 @@ const Signin = ({setLoginUser}) => {
         const newUser = { ...user };
         try {
             if(newUser){
-                axios.post(`http://localhost:5000/api/signin`, newUser)
+                axios.post(`${process.env.REACT_APP_BASE_URL}/api/signin`, newUser)
                 .then(res => {
                     if (res) {
                         console.log(res.data.user);

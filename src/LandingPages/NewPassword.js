@@ -15,7 +15,7 @@ function NewPassword () {
     try {
       if (otp && password) {
         axios
-          .post(`http://localhost:5000/api/submit-otp`, {
+          .post(`${process.env.REACT_APP_BASE_URL}/api/submit-otp`, {
             otp: otp,
             password: password
           })

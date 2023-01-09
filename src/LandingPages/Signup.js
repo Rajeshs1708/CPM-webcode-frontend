@@ -36,13 +36,12 @@ const Signup = () => {
     }
 
     const handleSubmit = async (e) => {
-        console.log("role  :",role);
         e.preventDefault();
         try {
-            const { firstName, lastName, email, password,role} = user;
+            const { firstName, lastName, email, password} = user;
             console.log(user);
-            if (firstName && lastName && email && password || role ) {
-                axios.post(`http://localhost:5000/api/signup`, user)
+            if (firstName && lastName && email && password ) {
+                axios.post(`${process.env.REACT_APP_BASE_URL}/api/signup`, user)
                     .then(res =>{
                         if (res) {
                             const notify = () => toast.success(`*${res.data.message}*`, { theme: 'colored'});

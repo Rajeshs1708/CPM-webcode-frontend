@@ -16,7 +16,7 @@ const UserHomePage = () => {
 
     const handleLogout = () => {
         try {
-            axios.get(`http://localhost:5000/api/signout`)
+            axios.get(`${process.env.REACT_APP_BASE_URL}/api/signout`)
                 .then(res => {
                     if (res) {
                         localStorage.removeItem("TOKEN");

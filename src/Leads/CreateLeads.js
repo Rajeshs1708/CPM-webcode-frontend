@@ -15,8 +15,7 @@ const CreateLeads = () => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-    });;
-
+    });
 
     const [employeeDetails, setEmployeeDetails] = useState({
         name: "",
@@ -25,14 +24,11 @@ const CreateLeads = () => {
         query: ""
     });
 
-
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newEmployee = { ...employeeDetails };
         try {
-            const response = await axios.post(`http://localhost:5000/api/create-lead`, newEmployee);
+            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/create-lead`, newEmployee);
             console.log();
             if (response) {
                 setEmployeeDetails({

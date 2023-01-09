@@ -13,7 +13,7 @@ function ForgetPassword () {
       e.preventDefault();
       try {
           if (email) {
-              axios.post(`http://localhost:5000/api/send-otp`, { email: email })
+              axios.post(`${process.env.REACT_APP_BASE_URL}/api/send-otp`, { email: email })
                   .then(res => {
                       console.log(`OTP : ${res.data.otp}`);
                       if (res.data.code === 200) {

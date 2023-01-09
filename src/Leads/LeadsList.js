@@ -11,7 +11,7 @@ const LeadsList = () => {
     }, []);
 
     const getEmployees = () => {
-        axios.get(`http://localhost:5000/api/get-all-leads`).then(response => {
+        axios.get(`${process.env.REACT_APP_BASE_URL}/api/get-all-leads`).then(response => {
             setEmployees(response.data)
         }).catch(err => {
             console.log('Error:', err)
@@ -19,7 +19,7 @@ const LeadsList = () => {
     };
 
     const deleteEmployee = (employeeId) => {
-        axios.delete(`http://localhost:5000/api/delete-lead/${employeeId}`).then(response => {
+        axios.delete(`${process.env.REACT_APP_BASE_URL}/api/delete-lead/${employeeId}`).then(response => {
             if (response) {
                 getEmployees();
             }
