@@ -39,7 +39,6 @@ const Signup = () => {
         e.preventDefault();
         try {
             const { firstName, lastName, email, password} = user;
-            console.log(user);
             if (firstName && lastName && email && password ) {
                 axios.post(`${process.env.REACT_APP_BASE_URL}/api/signup`, user)
                     .then(res =>{

@@ -21,7 +21,6 @@ const Signin = ({setLoginUser}) => {
                 axios.post(`${process.env.REACT_APP_BASE_URL}/api/signin`, newUser)
                 .then(res => {
                     if (res) {
-                        console.log(res.data.user);
                         const notify = () => toast.success(`Welcome Mrs/Mr.${res.data.user.firstName}`, {autoClose: 3000,theme: "colored",});
                         notify()
                         localStorage.setItem('TOKEN', res.data.token)
