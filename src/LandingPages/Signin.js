@@ -5,44 +5,47 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Signin = ({setLoginUser}) => {
-
     
-    const notifyError = () => toast.error('User not Found ! Please Signin', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-    });
-
-
+    const navigate = useNavigate();
+    
     const [user, setUser] = useState({
         email: "",
         password: ""
     });
 
-    const navigate = useNavigate();
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newUser = { ...user };
         try {
-                const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/signin`, newUser);
-                console.log("response:",response.data);
-                if (response) {
-                    alert(response.data.message)
-                    setLoginUser(response.data.user)
-                    navigate('/employee/navbar');
-                } else {
-                    alert("Invalid Input")
-                }
-            
+            if(newUser){
+                axios.post(`http://localhost:5000/api/signin`, newUser)
+                .then(res => {
+                    if (res) {
+                        console.log(res.data.user);
+                        const notify = () => toast.success(`Welcome Mrs/Mr.${res.data.user.firstName}`, {autoClose: 3000,theme: "colored",});
+                        notify()
+                        localStorage.setItem('TOKEN', res.data.token)
+                        localStorage.setItem('NAME', res.data.user.firstName)
+                        localStorage.setItem('EMAIL', res.data.user.email)
+                        setLoginUser(res.data.user)
+                        setTimeout(() => {
+                            navigate('/employee/navbar');
+                        }, 3000)
+                    }
+                })
+                .catch(err => {
+                    const notify = () => toast.error(`*${err.response.data.message}*`, { theme: 'colored' });
+                    notify()
+                })
+            } else {
+                const notify = () => toast.error("Invalid input", { theme: 'colored' });
+                notify()
+            }
+
         } catch (err) {
-            notifyError()
+            const notify = () => toast.error(" Input Error", { theme: 'colored' });
+            notify()
+            console.log("Error...", err);
         }
     };
 
@@ -66,20 +69,10 @@ const Signin = ({setLoginUser}) => {
                     </div>
 
                     <div className="row mb-4">
-                        <div className="col d-flex justify-content-center">
-
-                            <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="" id="form2Example31"  />
-                                <label className="form-check-label" for="form2Example31"> Remember me </label>
-                            </div>
-                        </div>
-
                         <div className="col">
-
-                            <NavLink to="/password-reset" href="#!">Forgot password?</NavLink>
+                            <NavLink to="/forgetPassword">Forgot password?</NavLink>
                         </div>
                     </div>
-
 
                     <div className="form-group text-center">
                         <input
@@ -88,18 +81,8 @@ const Signin = ({setLoginUser}) => {
                             className="btn btn-primary"
                             style={{width:"20rem"}}
                         />
-                        <ToastContainer
-                            position="top-center"
-                            autoClose={5000}
-                            hideProgressBar={false}
-                            newestOnTop={false}
-                            closeOnClick
-                            rtl={false}
-                            pauseOnFocusLoss
-                            draggable
-                            pauseOnHover
-                            theme="colored"
-                        />
+                    <ToastContainer autoClose={3000} theme="colored" />
+
                     </div><br/>
 
                     <div className="text-center">

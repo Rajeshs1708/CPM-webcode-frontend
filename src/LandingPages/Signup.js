@@ -7,16 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
 
-    const notifySuccess = () => toast.success(' Signup Successfully', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-    });
 
     const navigate = useNavigate()
 
@@ -24,7 +14,8 @@ const Signup = () => {
         firstName: "",
         lastName: "",
         email: "",
-        password: ""
+        password: "",
+        role: 0
     })
 
     const [isChecked, setIsChecked] = useState(false);
@@ -39,39 +30,47 @@ const Signup = () => {
         }
     }, [isChecked]);
 
-
     const handleChange = (e) => {
         const { name, value } = e.target
         setUser({ ...user, [name]: value })
     }
 
-
     const handleSubmit = async (e) => {
+        console.log("role  :",role);
         e.preventDefault();
         try {
-            const { firstName, lastName, email, password, role } = user;
-            if (firstName && lastName && email && password) {
-                axios.post(`${process.env.REACT_APP_BASE_URL}/api/signup`, user)
-                    .then(res => notifySuccess(res.data.message))
-                    .catch(err => alert(err.data.message))
-
-                navigate('/signin')
-            } else {
-                alert("Invalid input")
+            const { firstName, lastName, email, password,role} = user;
+            console.log(user);
+            if (firstName && lastName && email && password || role ) {
+                axios.post(`http://localhost:5000/api/signup`, user)
+                    .then(res =>{
+                        if (res) {
+                            const notify = () => toast.success(`*${res.data.message}*`, { theme: 'colored'});
+                            notify()
+                            setTimeout(() => {
+                                navigate('/signin')
+                            }, 3000)
+                        }
+                    })
+                    .catch(err => {
+                        const notify = () => toast.error(`*${err.response.data.message}*`, { theme: 'colored' });
+                        notify()
+                    })
+            } 
+            else {
+                const notify = () => toast.error("Invalid input", { theme: 'colored' });
+                notify()
             }
 
-        } catch (err) {
-            alert(" Input Error")
+        }catch (err) {
+            const notify = () => toast.error(" Input Error", { theme: 'colored' });
+            notify()
             console.log("Error...", err);
         }
     };
-
-
     const toggleCheckboxChange = () => {
         setIsChecked(!isChecked);
     }
-
-
     return (
         <>
             <div className="formSteps">
@@ -127,18 +126,7 @@ const Signup = () => {
                     </div>
                     <div className="col-12">
                         <button style={{ width: "20rem" }} className="btn btn-primary" type="submit">Singup</button>
-                        <ToastContainer
-                            position="top-center"
-                            autoClose={5000}
-                            hideProgressBar={false}
-                            newestOnTop={false}
-                            closeOnClick
-                            rtl={false}
-                            pauseOnFocusLoss
-                            draggable
-                            pauseOnHover
-                            theme="colored"
-                        />
+                        <ToastContainer hideProgressBar={true}/>
                     </div>
                 </form>
             </div>

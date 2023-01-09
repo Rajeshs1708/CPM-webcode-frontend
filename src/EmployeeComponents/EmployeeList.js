@@ -11,7 +11,7 @@ const EmployeeList = () => {
     }, []);
 
     const getEmployees = () => {
-        axios.get(`${process.env.REACT_APP_BASE_URL}/api/get-all-employee`)
+        axios.get(`http://localhost:5000/api/get-all-employee`)
         .then(response => {
             setEmployees(response.data)
         }).catch(err => {
@@ -20,7 +20,7 @@ const EmployeeList = () => {
     };
 
     const deleteEmployee = (employeeId) => {
-        axios.delete(`${process.env.REACT_APP_BASE_URL}/api/delete-employee/${employeeId}`).then(response => {
+        axios.delete(`http://localhost:5000/api/delete-employee/${employeeId}`).then(response => {
             if (response) {
                 getEmployees();
             }

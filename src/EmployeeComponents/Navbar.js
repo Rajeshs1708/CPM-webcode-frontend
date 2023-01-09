@@ -1,9 +1,44 @@
-import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { NavLink,useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      const token = localStorage.getItem('TOKEN');
+      if (!token) {
+        navigate('/')
+      }
+    }, [navigate])
+
+    const handleLogout = () => {
+        try {
+            axios.get(`http://localhost:5000/api/signout`)
+                .then(res => {
+                    if (res) {
+                        localStorage.removeItem("TOKEN");
+                        localStorage.removeItem("NAME");
+                        localStorage.removeItem("EMAIL");
+                        const notify = () => toast.success(`*${res.data.message}*`, { theme: 'colored'});
+                        notify()
+                        setTimeout(() => {
+                            navigate('/')
+                        }, 1000)
     
+                    }
+                })
+                .catch(err => {
+                  const notify = () => toast.error(`${err.response.data.message}`, { theme: 'colored'});
+                        notify()
+                })
+    
+        } catch (err) {
+            console.log("Error...", err);
+        }
+    }
 
     return (
         <div>
@@ -27,7 +62,7 @@ const NavBar = () => {
                             </a>
 
                             <a className="nav-link btn" href="#">
-                                <NavLink className="nav-link" style={{color:"blue"}} to="/">Logout</NavLink>
+                                <NavLink onClick={handleLogout} className="nav-link" style={{color:"blue"}} to="/">Logout</NavLink>
                             </a>
                           
                         </div>

@@ -14,7 +14,7 @@ const UpdateLead = () => {
 
     useEffect(() => {
         const id = params.id.toString();
-        axios.get(`${process.env.REACT_APP_BASE_URL}/api/get-single-lead/${id}`).then(response => {
+        axios.get(`http://localhost:5000/api/get-single-lead/${id}`).then(response => {
             setEmployeeDetails(response.data[0]);
             console.log(response)
         }).catch(err => {
@@ -27,7 +27,7 @@ const UpdateLead = () => {
         const id = params.id.toString();
         const newEmployee = { ...employeeDetails };
         try {
-            const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/api/update-lead/${id}`, newEmployee);
+            const response = await axios.put(`http://localhost:5000/api/update-lead/${id}`, newEmployee);
             if (response) {
                 setEmployeeDetails({
                     name: "",
