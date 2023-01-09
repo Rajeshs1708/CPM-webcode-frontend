@@ -26,7 +26,7 @@ const NavBar = () => {
                         notify()
                         setTimeout(() => {
                             navigate('/')
-                        }, 1000)
+                        }, 2000)
     
                     }
                 })

@@ -26,7 +26,7 @@ const UserHomePage = () => {
                         notify()
                         setTimeout(() => {
                             navigate('/')
-                        }, 1000)
+                        }, 2000)
     
                     }
                 })
