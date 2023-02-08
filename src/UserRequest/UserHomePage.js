@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { NavLink,useNavigate } from "react-router-dom";
+import NavigationBar from "../NavigationBar";
 
 const UserHomePage = () => {
     const navigate = useNavigate();
@@ -13,60 +14,12 @@ const UserHomePage = () => {
         navigate('/')
       }
     }, [navigate])
-
-    const handleLogout = () => {
-        try {
-            axios.get(`${process.env.REACT_APP_BASE_URL}/api/signout`)
-                .then(res => {
-                    if (res) {
-                        localStorage.removeItem("TOKEN");
-                        localStorage.removeItem("NAME");
-                        localStorage.removeItem("EMAIL");
-                        const notify = () => toast.success(`*${res.data.message}*`, { theme: 'colored'});
-                        notify()
-                        setTimeout(() => {
-                            navigate('/')
-                        }, 2000)
-    
-                    }
-                })
-                .catch(err => {
-                  const notify = () => toast.error(`${err.response.data.message}`, { theme: 'colored'});
-                        notify()
-                })
-    
-        } catch (err) {
-            console.log("Error...", err);
-        }
-    }
     return (
         <div>
-
-            <nav className="navbar navbar-expand-lg bg-light">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="#" style={{fontWeight:"bold",color:"darkBlue"}}><span style={{fontSize:"1.9rem"}}>C</span>PM.COM</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div className="navbar-nav">
-                            <a className="nav-link" aria-current="page" href="#">
-                                <a className="nav-link">Customer Info</a>
-                            </a>
-                            <a className="nav-link" href="#">
-                                <a className="nav-link">Create Leads</a>
-                            </a>
-                            <a className="nav-link btn">
-                                <NavLink onClick={handleLogout} className="nav-link" to="/" style={{color:"blue"}}>Logout</NavLink>
-                                <ToastContainer hideProgressBar={true}/>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
+            <NavigationBar />
             <main>
-                <h1 className="text-center pt-4">User Home Page</h1>
+                <h1 className="text-center pt-4">Welcome ! User</h1>
+                <p className="lead text-center">Hi ! {localStorage.getItem("NAME")}</p>
                 <div className="container pt-5 px-5">
                 <div className="row gx-5 align-items-center">
                     <div className="col-lg-6 aos-init aos-animate" data-aos="fade-up">

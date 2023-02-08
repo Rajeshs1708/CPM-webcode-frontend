@@ -26,6 +26,7 @@ const Signin = ({setLoginUser}) => {
                         localStorage.setItem('TOKEN', res.data.token)
                         localStorage.setItem('NAME', res.data.user.firstName)
                         localStorage.setItem('EMAIL', res.data.user.email)
+                        localStorage.setItem('ROLE', res.data.user.role)
                         setLoginUser(res.data.user)
                         setTimeout(() => {
                             navigate('/employee/navbar');
