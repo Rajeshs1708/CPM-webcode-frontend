@@ -123,7 +123,7 @@ const Signup = () => {
                         </div>
                     </div>
                     <div className="col-12">
-                        <button style={{ width: "20rem" }} className="btn btn-primary" type="submit">Singup</button>
+                        <button style={{ width: "20rem" }} className="btn btn-primary" type="submit">Signup</button>
                         <ToastContainer hideProgressBar={true}/>
                     </div>
                 </form>
