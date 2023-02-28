@@ -1,99 +1,29 @@
 import { NavLink } from 'react-router-dom'
 import './Pricing.css'
+import StripeCheckout from 'react-stripe-checkout'
+import 'react-toastify/dist/ReactToastify.css'
+import { useState } from 'react'
 
 const Pricing = () => {
-  const handleSubmitBasic = e => {
-    try {
-      e.preventDefault()
-      var options = {
-        key: `${process.env.REACT_APP_KEY}`,
-        key_secret: `${process.env.REACT_APP_KEY_SECRET}`,
-        amout: 799 * 100,
-        currency: 'INR',
-        name: 'CRM_GROUP',
-        description: 'for Basic user',
-        handler: function (response) {
-          alert(response.razorpay_payment_id)
-        },
-        prefill: {
-          name: 'Rajesh',
-          email: `${process.env.REACT_APP_KEY_EMAIL}`,
-          contact: `${process.env.REACT_APP_KEY_CONTACT}`
-        },
-        notes: {
-          address: 'Razorpay Corporate office'
-        },
-        theme: {
-          color: '#3399cc'
-        }
-      }
-      var pay = new window.Razorpay(options)
-      pay.open()
-    } catch (error) {
-      alert(error)
-    }
-  }
-  const handleSubmitStandard = e => {
-    try {
-      e.preventDefault()
-      var options = {
-        key: `${process.env.REACT_APP_KEY}`,
-        key_secret: `${process.env.REACT_APP_KEY_SECRET}`,
-        amout: 1649 * 100,
-        currency: 'INR',
-        name: 'CRM_GROUP',
-        description: 'for Basic user',
-        handler: function (response) {
-          alert(response.razorpay_payment_id)
-        },
-        prefill: {
-          name: 'Rajesh',
-          email: `${process.env.REACT_APP_KEY_EMAIL}`,
-          contact: `${process.env.REACT_APP_KEY_CONTACT}`
-        },
-        notes: {
-          address: 'Razorpay Corporate office'
-        },
-        theme: {
-          color: '#3399cc'
-        }
-      }
-      var pay = new window.Razorpay(options)
-      pay.open()
-    } catch (error) {
-      alert(error)
-    }
-  }
-  const handleSubmitPremium = e => {
-    try {
-      e.preventDefault()
-      var options = {
-        key: `${process.env.REACT_APP_KEY}`,
-        key_secret: `${process.env.REACT_APP_KEY_SECRET}`,
-        amout: 3299 * 100,
-        currency: 'INR',
-        name: 'CRM_GROUP',
-        description: 'for Basic user',
-        handler: function (response) {
-          alert(response.razorpay_payment_id)
-        },
-        prefill: {
-          name: 'Rajesh',
-          email: `${process.env.REACT_APP_KEY_EMAIL}`,
-          contact: `${process.env.REACT_APP_KEY_CONTACT}`
-        },
-        notes: {
-          address: 'Razorpay Corporate office'
-        },
-        theme: {
-          color: '#3399cc'
-        }
-      }
-      var pay = new window.Razorpay(options)
-      pay.open()
-    } catch (error) {
-      alert(error)
-    }
+  const [product] = useState({
+    name: 'CRM_GROUP',
+    description: 'for get premium'
+  })
+
+  async function handleToken (token) {
+    const body = { token, product }
+    const headers = { 'Content-Type': 'application/json' }
+    return fetch(`${process.env.REACT_APP_BASE_URL}/api/checkout`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(body)
+    })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
   return (
     <>
@@ -109,7 +39,7 @@ const Pricing = () => {
                 fontWeight: 'bold'
               }}
             >
-              Razorpay Integration
+              Stripe Payment Integration
             </p>
             <div className='col-lg-4 col-md-12 mb-4'>
               <div className='card card1 h-100'>
@@ -121,13 +51,15 @@ const Pricing = () => {
                   <br />
                   <div>
                     <div className='d-grid my-3'>
-                      <button
-                        type='submit'
-                        className='btn btn-outline-dark btn-block'
-                        onClick={handleSubmitBasic}
-                      >
-                        Pay with Razorpay
-                      </button>
+                      <StripeCheckout
+                        stripeKey={`${process.env.REACT_APP_KEY}`}
+                        token={handleToken}
+                        name={product.name}
+                        currency='INR'
+                        amount={799 * 100}
+                        billingAddress
+                        shippingAddress
+                      />
                     </div>
                     <ul>
                       <li>Automate and optimize your sales cycle</li>
@@ -147,12 +79,15 @@ const Pricing = () => {
                   <br />
                   <div>
                     <div className='d-grid my-3'>
-                      <button
-                        className='btn btn-outline-dark btn-block'
-                        onClick={handleSubmitStandard}
-                      >
-                        Pay with Razorpay
-                      </button>
+                      <StripeCheckout
+                        stripeKey={`${process.env.REACT_APP_KEY}`}
+                        token={handleToken}
+                        name={product.name}
+                        currency='INR'
+                        amount={1649 * 100}
+                        billingAddress
+                        shippingAddress
+                      />
                     </div>
                     <ul>
                       <li>
@@ -174,12 +109,15 @@ const Pricing = () => {
                   <br />
                   <div>
                     <div className='d-grid my-3'>
-                      <button
-                        className='btn btn-outline-dark btn-block'
-                        onClick={handleSubmitPremium}
-                      >
-                        Pay with Razorpay
-                      </button>
+                      <StripeCheckout
+                        stripeKey={`${process.env.REACT_APP_KEY}`}
+                        token={handleToken}
+                        name={product.name}
+                        currency='INR'
+                        amount={3299 * 100}
+                        billingAddress
+                        shippingAddress
+                      />
                     </div>
                     <ul>
                       <li>
