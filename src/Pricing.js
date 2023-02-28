@@ -5,8 +5,8 @@ const Pricing = () => {
     try {
       e.preventDefault()
       var options = {
-        key: '',
-        key_secret: '',
+        key: `${process.env.REACT_APP_KEY}`,
+        key_secret: `${process.env.REACT_APP_KEY_SECRET}`,
         amout: 799 * 100,
         currency: 'INR',
         name: 'CRM_GROUP',
@@ -16,8 +16,8 @@ const Pricing = () => {
         },
         prefill: {
           name: 'Rajesh',
-          email: 'rajeshs1097@gmail.com',
-          contact: '8637656612'
+          email: `${process.env.REACT_APP_KEY_EMAIL}`,
+          contact: `${process.env.REACT_APP_KEY_CONTACT}`
         },
         notes: {
           address: 'Razorpay Corporate office'
@@ -36,8 +36,8 @@ const Pricing = () => {
     try {
       e.preventDefault()
       var options = {
-        key: '',
-        key_secret: '',
+        key: `${process.env.REACT_APP_KEY}`,
+        key_secret: `${process.env.REACT_APP_KEY_SECRET}`,
         amout: 1649 * 100,
         currency: 'INR',
         name: 'CRM_GROUP',
@@ -47,8 +47,8 @@ const Pricing = () => {
         },
         prefill: {
           name: 'Rajesh',
-          email: 'rajeshs1097@gmail.com',
-          contact: '8637656612'
+          email: `${process.env.REACT_APP_KEY_EMAIL}`,
+          contact: `${process.env.REACT_APP_KEY_CONTACT}`
         },
         notes: {
           address: 'Razorpay Corporate office'
@@ -67,8 +67,8 @@ const Pricing = () => {
     try {
       e.preventDefault()
       var options = {
-        key: '',
-        key_secret: '',
+        key: `${process.env.REACT_APP_KEY}`,
+        key_secret: `${process.env.REACT_APP_KEY_SECRET}`,
         amout: 3299 * 100,
         currency: 'INR',
         name: 'CRM_GROUP',
@@ -78,8 +78,8 @@ const Pricing = () => {
         },
         prefill: {
           name: 'Rajesh',
-          email: 'rajeshs1097@gmail.com',
-          contact: '8637656612'
+          email: `${process.env.REACT_APP_KEY_EMAIL}`,
+          contact: `${process.env.REACT_APP_KEY_CONTACT}`
         },
         notes: {
           address: 'Razorpay Corporate office'
