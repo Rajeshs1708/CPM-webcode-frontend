@@ -58,10 +58,10 @@ const CreateLeads = () => {
     <>
       <div className='formStepsContact'>
        
-        <h3>Contact Us</h3>
-        <form style={{ width: '20rem' }} onSubmit={handleSubmit}>
+        <h3>Create Query</h3>
+        <form style={{ width: '50vw' }} onSubmit={handleSubmit}>
           <div className='form-group'>
-            <label htmlFor='name'>Name</label>
+            <label htmlFor='name' className='p-1'>Name</label>
             <input
               className='form-control'
               id='name'
@@ -114,7 +114,7 @@ const CreateLeads = () => {
               type='submit'
               value='Send'
               className='btn btn-primary'
-              style={{ width: '20rem' }}
+              style={{ width: '50vw' }}
             />
             <ToastContainer
               position='top-center'

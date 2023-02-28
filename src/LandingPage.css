@@ -1,22 +1,15 @@
 .formSteps {
-  border: 1px solid black;
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
-.card1{
-  background: whitesmoke;
-}
-.card1:hover {
-  background:lightgray;
-}
-
-
-#navbarNavAltMarkup{
+.formStepsContact{
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }

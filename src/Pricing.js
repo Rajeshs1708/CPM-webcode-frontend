@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import './Pricing.css'
 
 const Pricing = () => {
   const handleSubmitBasic = e => {

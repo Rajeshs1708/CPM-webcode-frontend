@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
+import './LandingPage.css'
 import EmployeeList from './EmployeeComponents/EmployeeList';
 import CreateEmployee from './EmployeeComponents/CreateEmployee';
 import UpdateEmployee from './EmployeeComponents/UpdateEmployee';

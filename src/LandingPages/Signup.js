@@ -63,7 +63,7 @@ const Signup = () => {
         </div>
         <form
           className='row g-3 needs-validationd-flex flex-column'
-          style={{ width: '20rem' }}
+          style={{ width: '40vw' }}         
           onSubmit={handleSubmit}
           novalidate
         >
@@ -138,7 +138,7 @@ const Signup = () => {
 
           <div className='col-12'>
             <button
-              style={{ width: '20rem' }}
+              style={{ width: '40vw' }}
               className='btn btn-primary'
               type='submit'
             >

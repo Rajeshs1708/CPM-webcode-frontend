@@ -64,7 +64,7 @@ const Signin = ({ setLoginUser }) => {
   return (
     <>
       <div className='formSteps'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{ width: '40vw' }}>
           <h1 className='text-center p-3'>Signin</h1>
           <div className='form-outline mb-4'>
             <input
@@ -101,7 +101,7 @@ const Signin = ({ setLoginUser }) => {
               type='submit'
               value='Signin'
               className='btn btn-primary'
-              style={{ width: '20rem' }}
+              style={{ width: '40vw' }}
             />
             <ToastContainer autoClose={3000} theme='colored' />
           </div>

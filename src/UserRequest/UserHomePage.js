@@ -22,7 +22,7 @@ const UserHomePage = () => {
         </div>
         <h1 className='text-center pt-2'>Welcome ! User</h1>
         <p className='lead text-center'>Hi ! {localStorage.getItem('NAME')}</p>
-        <div className='container pt-5 px-5'>
+        <div className='container'>
           <div className='row align-items-center'>
             <div className='col-md-6'>
               <h1 className='page-header-ui-title'>
