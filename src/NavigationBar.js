@@ -33,7 +33,10 @@ function NavigationBar () {
     }
   }
   return (
-    <nav className='navbar navbar-expand-lg bg-light'>
+    <nav
+      className='navbar navbar-expand-lg'
+      style={{ backgroundColor: ' #e3f2fd' }}
+    >
       <div className='container-fluid'>
         <a
           className='navbar-brand'
@@ -54,51 +57,45 @@ function NavigationBar () {
           <span className='navbar-toggler-icon'></span>
         </button>
         <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
-         {role == 1 ? (
-            <div className='navbar-nav'>
+          {role == 1 ? (
+            <div className='navbar-nav ms-auto'>
               <a className='nav-link' href='#'>
                 <NavLink className='nav-link' to='/employee/create'>
                   Create Employee
                 </NavLink>
               </a>
-              <a className='nav-link active' aria-current='page' href='#'>
+              <a className='nav-link ' aria-current='page' href='#'>
                 <NavLink className='nav-link' to='/employee/list'>
                   View Employee List
                 </NavLink>
               </a>
-              <a className='nav-link active' aria-current='page' href='#'>
+              <a className='nav-link' aria-current='page' href='#'>
                 <NavLink className='nav-link' to='/lead/list'>
-                  View All Request
+                  View Queries
                 </NavLink>
               </a>
 
-              <a className='nav-link btn' href='#'>
-                <NavLink
-                  onClick={handleLogout}
-                  className='nav-link'
-                  style={{ color: 'blue' }}
-                  to='/'
-                >
+              <a className='nav-link' href='#'>
+                <NavLink onClick={handleLogout} className='nav-link' to='/'>
                   Logout
                 </NavLink>
                 <ToastContainer hideProgressBar={true} />
               </a>
             </div>
           ) : (
-            <div className='navbar-nav'>
-              <a className='nav-link' aria-current='page' href='#'>
-                <a className='nav-link'>Customer Info</a>
-              </a>
+            <div className='navbar-nav ms-auto'>
               <a className='nav-link' href='#'>
-                <a className='nav-link'>Create Leads</a>
+                <NavLink className='nav-link' to='/pricing'>
+                  Pricing
+                </NavLink>
               </a>
-              <a className='nav-link btn'>
-                <NavLink
-                  onClick={handleLogout}
-                  className='nav-link'
-                  to='/'
-                  style={{ color: 'blue' }}
-                >
+              <a className='nav-link'>
+                <NavLink className='nav-link' to='/lead/create'>
+                  Create Query
+                </NavLink>
+              </a>
+              <a className='nav-link'>
+                <NavLink onClick={handleLogout} className='nav-link' to='/'>
                   Logout
                 </NavLink>
                 <ToastContainer hideProgressBar={true} />

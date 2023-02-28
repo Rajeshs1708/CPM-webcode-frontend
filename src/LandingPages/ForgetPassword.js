@@ -64,6 +64,7 @@ function ForgetPassword () {
               className='form-control'
               id='validationCustom03'
               name='email'
+              placeholder='Enter your Email'
               value={email} onChange={e => setEmail(e.target.value)}
               required
             />

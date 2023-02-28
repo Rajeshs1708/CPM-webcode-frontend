@@ -1,75 +1,131 @@
 import { NavLink } from 'react-router-dom'
 
 const Pricing = () => {
+  const handleSubmitBasic = e => {
+    try {
+      e.preventDefault()
+      var options = {
+        key: '',
+        key_secret: '',
+        amout: 799 * 100,
+        currency: 'INR',
+        name: 'CRM_GROUP',
+        description: 'for Basic user',
+        handler: function (response) {
+          alert(response.razorpay_payment_id)
+        },
+        prefill: {
+          name: 'Rajesh',
+          email: 'rajeshs1097@gmail.com',
+          contact: '8637656612'
+        },
+        notes: {
+          address: 'Razorpay Corporate office'
+        },
+        theme: {
+          color: '#3399cc'
+        }
+      }
+      var pay = new window.Razorpay(options)
+      pay.open()
+    } catch (error) {
+      alert(error)
+    }
+  }
+  const handleSubmitStandard = e => {
+    try {
+      e.preventDefault()
+      var options = {
+        key: '',
+        key_secret: '',
+        amout: 1649 * 100,
+        currency: 'INR',
+        name: 'CRM_GROUP',
+        description: 'for Basic user',
+        handler: function (response) {
+          alert(response.razorpay_payment_id)
+        },
+        prefill: {
+          name: 'Rajesh',
+          email: 'rajeshs1097@gmail.com',
+          contact: '8637656612'
+        },
+        notes: {
+          address: 'Razorpay Corporate office'
+        },
+        theme: {
+          color: '#3399cc'
+        }
+      }
+      var pay = new window.Razorpay(options)
+      pay.open()
+    } catch (error) {
+      alert(error)
+    }
+  }
+  const handleSubmitPremium = e => {
+    try {
+      e.preventDefault()
+      var options = {
+        key: '',
+        key_secret: '',
+        amout: 3299 * 100,
+        currency: 'INR',
+        name: 'CRM_GROUP',
+        description: 'for Basic user',
+        handler: function (response) {
+          alert(response.razorpay_payment_id)
+        },
+        prefill: {
+          name: 'Rajesh',
+          email: 'rajeshs1097@gmail.com',
+          contact: '8637656612'
+        },
+        notes: {
+          address: 'Razorpay Corporate office'
+        },
+        theme: {
+          color: '#3399cc'
+        }
+      }
+      var pay = new window.Razorpay(options)
+      pay.open()
+    } catch (error) {
+      alert(error)
+    }
+  }
   return (
     <>
-      <nav className='navbar navbar-expand-lg bg-light'>
-        <div className='container-fluid'>
-          <a
-            className='navbar-brand'
-            style={{ fontWeight: 'bold', color: 'darkBlue' }}
-          >
-            <span style={{ fontSize: '1.9rem' }}>C</span>RM.COM
-          </a>
-          <button
-            className='navbar-toggler'
-            type='button'
-            data-bs-toggle='collapse'
-            data-bs-target='#navbarNavAltMarkup'
-            aria-controls='navbarNavAltMarkup'
-            aria-expanded='false'
-            aria-label='Toggle navigation'
-          >
-            <span className='navbar-toggler-icon'></span>
-          </button>
-          <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
-            <div className='navbar-nav'>
-              <a className='nav-link' aria-current='page' href='#'>
-                <NavLink className='navbar-brand' to='/'>
-                  Home
-                </NavLink>
-              </a>
-              <a className='nav-link' href='#'>
-                <NavLink className='navbar-brand' to='/pricing'>
-                  Pricing
-                </NavLink>
-              </a>
-              <a className='nav-link'>
-                <NavLink className='navbar-brand' to='/lead/create'>
-                  ContactUs
-                </NavLink>
-              </a>
-              <a className='nav-link'>
-                <NavLink
-                  className='navbar-brand'
-                  style={{ color: 'blue' }}
-                  to='/signin'
-                >
-                  Signin
-                </NavLink>
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <div class='container-fluid'>
-        <div class='container p-5'>
-          <div class='row'>
-            <div class='col-lg-4 col-md-12 mb-4'>
-              <div class='card card1 h-100'>
-                <div class='card-body'>
-                  <h5 class='card-title'>Basic</h5>
-                  <small class='text-muted'>Individual</small>
+      <div className='container-fluid' style={{ backgroundColor: '#B9D9EB' }}>
+        <div className='p-5'>
+          <div className='row'>
+            <h1 className='text-center text-primary p-4'>Pricing</h1>
+            <p
+              className='lead text-center'
+              style={{
+                color: 'darkblue',
+                fontSize: '35px',
+                fontWeight: 'bold'
+              }}
+            >
+              Razorpay Integration
+            </p>
+            <div className='col-lg-4 col-md-12 mb-4'>
+              <div className='card card1 h-100'>
+                <div className='card-body'>
+                  <h5 className='card-title'>Basic</h5>
+                  <small className='text-muted'>Individual</small>
                   <br />
-                  <br />
-                  <span class='h2'>$8</span>/month
-                  <br />
+                  <span className='h2'>₹ 799</span>/month
                   <br />
                   <div>
-                    <div class='d-grid my-3'>
-                      <button class='btn btn-outline-dark btn-block'>
-                        Select
+                    <div className='d-grid my-3'>
+                      <button
+                        type='submit'
+                        className='btn btn-outline-dark btn-block'
+                        onClick={handleSubmitBasic}
+                      >
+                        Pay with Razorpay
                       </button>
                     </div>
                     <ul>
@@ -80,20 +136,21 @@ const Pricing = () => {
               </div>
             </div>
 
-            <div class='col-lg-4 col-md-12 mb-4'>
-              <div class='card card1 h-100'>
-                <div class='card-body'>
-                  <h5 class='card-title'>Standard</h5>
-                  <small class='text-muted'>Small Business</small>
+            <div className='col-lg-4 col-md-12 mb-4'>
+              <div className='card card1 h-100'>
+                <div className='card-body'>
+                  <h5 className='card-title'>Standard</h5>
+                  <small className='text-muted'>Small Business</small>
                   <br />
-                  <br />
-                  <span class='h2'>$20</span>/month
-                  <br />
+                  <span className='h2'>₹ 1649</span>/month
                   <br />
                   <div>
-                    <div class='d-grid my-3'>
-                      <button class='btn btn-outline-dark btn-block'>
-                        Select
+                    <div className='d-grid my-3'>
+                      <button
+                        className='btn btn-outline-dark btn-block'
+                        onClick={handleSubmitStandard}
+                      >
+                        Pay with Razorpay
                       </button>
                     </div>
                     <ul>
@@ -106,20 +163,21 @@ const Pricing = () => {
               </div>
             </div>
 
-            <div class='col-lg-4 col-md-12 mb-4'>
-              <div class='card card1 h-100'>
-                <div class='card-body'>
-                  <h5 class='card-title'>Premium</h5>
-                  <small class='text-muted'>Large Company</small>
+            <div className='col-lg-4 col-md-12 mb-4'>
+              <div className='card card1 h-100'>
+                <div className='card-body'>
+                  <h5 className='card-title'>Premium</h5>
+                  <small className='text-muted'>Large Company</small>
                   <br />
-                  <br />
-                  <span class='h2'>$40</span>/month
-                  <br />
+                  <span className='h2'>₹ 3299</span>/month
                   <br />
                   <div>
-                    <div class='d-grid my-3'>
-                      <button class='btn btn-outline-dark btn-block'>
-                        Select
+                    <div className='d-grid my-3'>
+                      <button
+                        className='btn btn-outline-dark btn-block'
+                        onClick={handleSubmitPremium}
+                      >
+                        Pay with Razorpay
                       </button>
                     </div>
                     <ul>
@@ -131,6 +189,11 @@ const Pricing = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className='text-center'>
+            <NavLink to={'/employee/navbar'}>
+              <button className='btn btn-secondary'>Back to Home</button>
+            </NavLink>
           </div>
         </div>
       </div>

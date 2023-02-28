@@ -7,18 +7,6 @@ import 'react-toastify/dist/ReactToastify.css'
 const CreateLeads = () => {
   const navigate = useNavigate()
 
-  //   const notify = () =>
-  //     toast.success(' request sent successfully!', {
-  //       position: 'top-center',
-  //       autoClose: 5000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //       theme: 'colored'
-  //     })
-
   const [employeeDetails, setEmployeeDetails] = useState({
     name: '',
     email: '',
@@ -54,9 +42,6 @@ const CreateLeads = () => {
             theme: 'colored'
           })
         notify()
-        setTimeout(()=>{
-            navigate('/')
-        },2000)
       }
     } catch (err) {
       console.log('Error: ', err)
@@ -72,6 +57,7 @@ const CreateLeads = () => {
   return (
     <>
       <div className='formStepsContact'>
+       
         <h3>Contact Us</h3>
         <form style={{ width: '20rem' }} onSubmit={handleSubmit}>
           <div className='form-group'>
@@ -80,6 +66,7 @@ const CreateLeads = () => {
               className='form-control'
               id='name'
               type='text'
+              placeholder='Name'
               value={employeeDetails.name}
               onChange={e => handleForm({ name: e.target.value })}
               required
@@ -91,6 +78,7 @@ const CreateLeads = () => {
               className='form-control'
               id='email'
               type='text'
+              placeholder='Email'
               value={employeeDetails.email}
               onChange={e => handleForm({ email: e.target.value })}
               required
@@ -102,6 +90,7 @@ const CreateLeads = () => {
               className='form-control'
               id='queryType'
               type='text'
+              placeholder='(E:g) Finance,Accounts,etc...'
               value={employeeDetails.queryType}
               onChange={e => handleForm({ queryType: e.target.value })}
               required
@@ -113,6 +102,7 @@ const CreateLeads = () => {
               className='form-control'
               id='query'
               type='text'
+              placeholder='Query Detail'
               value={employeeDetails.query}
               onChange={e => handleForm({ query: e.target.value })}
               required
@@ -122,7 +112,7 @@ const CreateLeads = () => {
           <div className='form-group'>
             <input
               type='submit'
-              value='Request'
+              value='Send'
               className='btn btn-primary'
               style={{ width: '20rem' }}
             />
@@ -140,6 +130,11 @@ const CreateLeads = () => {
             />
           </div>
         </form>
+        <NavLink to={'/employee/navbar'}>
+          <button className='btn btn-secondary mt-4'>
+            Back to Home
+          </button>
+        </NavLink>
       </div>
     </>
   )

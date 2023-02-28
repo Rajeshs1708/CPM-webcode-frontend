@@ -65,7 +65,7 @@ const Signin = ({ setLoginUser }) => {
     <>
       <div className='formSteps'>
         <form onSubmit={handleSubmit}>
-          <h1>Signin Page</h1>
+          <h1 className='text-center p-3'>Signin</h1>
           <div className='form-outline mb-4'>
             <input
               type='email'
@@ -74,7 +74,7 @@ const Signin = ({ setLoginUser }) => {
               name='email'
               value={user.email}
               onChange={e => handleForm({ email: e.target.value })}
-              placeholder='Email address'
+              placeholder='Enter your Email'
             />
           </div>
 
@@ -111,7 +111,7 @@ const Signin = ({ setLoginUser }) => {
             <p>
               Not a member?{' '}
               <NavLink to='/signup'>
-                <a href='#!'>Register</a>
+                <a>Register</a>
               </NavLink>
             </p>
           </div>

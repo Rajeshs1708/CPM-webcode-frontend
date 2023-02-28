@@ -73,7 +73,8 @@ function NewPassword () {
               type='otp'
               className='form-control'
               id='validationCustom03'
-              name='email'
+              name='OTP'
+              placeholder='Enter OTP'
               value={otp}
               onChange={e => setOtp(e.target.value)}
               required
@@ -89,6 +90,7 @@ function NewPassword () {
               className='form-control'
               id='validationCustom03'
               name='email'
+              placeholder='Password'
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
