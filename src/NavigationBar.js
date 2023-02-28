@@ -8,6 +8,8 @@ function NavigationBar () {
   const navigate = useNavigate()
   const token = localStorage.getItem('TOKEN')
   const role = localStorage.getItem('ROLE')
+  const name = localStorage.getItem('NAME')
+  const room = localStorage.getItem('EMAIL')
 
   const handleLogout = () => {
     try {
@@ -73,6 +75,11 @@ function NavigationBar () {
                   View Queries
                 </NavLink>
               </a>
+              <a className='nav-link' aria-current='page' href='#'>
+                <NavLink className='nav-link' to={`/chat?name=${name}&room=${room}`}>
+                  Chat
+                </NavLink>
+              </a>
 
               <a className='nav-link' href='#'>
                 <NavLink onClick={handleLogout} className='nav-link' to='/'>
@@ -91,6 +98,11 @@ function NavigationBar () {
               <a className='nav-link'>
                 <NavLink className='nav-link' to='/lead/create'>
                   Create Query
+                </NavLink>
+              </a>
+              <a className='nav-link' aria-current='page' href='#'>
+                <NavLink className='nav-link' to={`/chat?name=${name}&room=${room}`}>
+                  Chat
                 </NavLink>
               </a>
               <a className='nav-link'>

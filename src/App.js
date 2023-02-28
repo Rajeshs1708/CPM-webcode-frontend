@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './LandingPage.css'
+import './LandingPage.css';
 import EmployeeList from './EmployeeComponents/EmployeeList';
 import CreateEmployee from './EmployeeComponents/CreateEmployee';
 import UpdateEmployee from './EmployeeComponents/UpdateEmployee';
@@ -16,6 +16,7 @@ import CreateLeads from './Leads/CreateLeads';
 import LeadsList from './Leads/LeadsList';
 import UpdateLead from './Leads/UpdateLead';
 import NavigationBar from './NavigationBar';
+import Chat from './Chat';
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
 
             <Route path="/employee/navbar" element={user.role == 1 ? <AdminHomePage setLoginUser={setLoginUser} /> :<UserHomePage setLoginUser={setLoginUser}/>} />
             <Route exact path="/pricing" element={<Pricing />} />
+            <Route exact path="/chat" element={<Chat />} />
             <Route exact path="/lead/create" element={<CreateLeads />} />
             <Route exact path="/lead/list" element={<LeadsList />} />
             <Route exact path="/update/lead/:id" element={<UpdateLead />} />
