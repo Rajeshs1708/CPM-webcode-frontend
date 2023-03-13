@@ -57,9 +57,8 @@ const Signup = () => {
   return (
     <>
       <div className='formSteps'>
-        <div className='display-1'>
-          {' '}
-          <h1>Signup</h1>
+        <div>
+          <h1 className='display-2'>Signup</h1>
         </div>
         <form
           className='row g-3 needs-validationd-flex flex-column'
@@ -68,12 +67,10 @@ const Signup = () => {
           novalidate
         >
           <div className='col-md-12'>
-            <label for='validationCustom01' className='form-label'>
-              First name
-            </label>
+         
             <input
               type='text'
-              className='form-control'
+              className='form-control p-3'
               id='validationCustom01'
               name='firstName'
               placeholder='First name'
@@ -84,12 +81,10 @@ const Signup = () => {
             <div className='valid-feedback'>Looks good!</div>
           </div>
           <div className='col-md-12'>
-            <label for='validationCustom02' className='form-label'>
-              Last name
-            </label>
+          
             <input
               type='text'
-              className='form-control'
+              className='form-control p-3'
               id='validationCustom02'
               name='lastName'
               placeholder='Last name'
@@ -101,15 +96,13 @@ const Signup = () => {
           </div>
 
           <div className='col-md-12'>
-            <label for='validationCustom03' className='form-label'>
-              E-mail
-            </label>
+          
             <input
               type='text'
-              className='form-control'
+              className='form-control p-3'
               id='validationCustom03'
               name='email'
-              placeholder='Enter your Email'
+              placeholder='Email'
               value={user.email}
               onChange={handleChange}
               required
@@ -120,15 +113,13 @@ const Signup = () => {
           </div>
 
           <div className='col-md-12'>
-            <label for='validationCustom05' className='form-label'>
-              Password
-            </label>
+           
             <input
               type='password'
-              className='form-control'
+              className='form-control p-3'
               id='validationCustom05'
               name='password'
-              placeholder='password'
+              placeholder='Password'
               value={user.password}
               onChange={handleChange}
               required

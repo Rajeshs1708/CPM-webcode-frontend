@@ -55,9 +55,8 @@ function NewPassword () {
   return (
     <>
       <div className='formSteps'>
-        <div className='display-1'>
-          {' '}
-          <h1>Forget Password</h1>
+        <div>
+          <h1 className='display-3'>New Password</h1>
         </div>
         <form
           className='row g-3 needs-validationd-flex flex-column'
@@ -66,12 +65,10 @@ function NewPassword () {
           novalidate
         >
           <div className='col-md-12'>
-            <label for='validationCustom03' className='form-label'>
-              OTP
-            </label>
+          
             <input
               type='otp'
-              className='form-control'
+              className='form-control p-3'
               id='validationCustom03'
               name='OTP'
               placeholder='Enter OTP'
@@ -82,15 +79,13 @@ function NewPassword () {
           </div>
 
           <div className='col-md-12'>
-            <label for='validationCustom03' className='form-label'>
-              New Password
-            </label>
+          
             <input
               type='password'
-              className='form-control'
+              className='form-control p-3'
               id='validationCustom03'
               name='email'
-              placeholder='Password'
+              placeholder='New Password'
               value={password}
               onChange={e => setPassword(e.target.value)}
               required

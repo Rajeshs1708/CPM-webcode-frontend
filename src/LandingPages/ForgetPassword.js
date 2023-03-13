@@ -44,9 +44,9 @@ function ForgetPassword () {
   return (
     <>
       <div className='formSteps'>
-        <div className='display-1'>
-          {' '}
-          <h1>Forget Password</h1>
+        <div>
+        
+          <h1  className='display-3 mb-5'>Forget Password</h1>
         </div>
         <form
           className='row g-3 needs-validationd-flex flex-column'
@@ -56,12 +56,10 @@ function ForgetPassword () {
         >
         
           <div className='col-md-12'>
-            <label for='validationCustom03' className='form-label'>
-              E-mail
-            </label>
+          
             <input
               type='email'
-              className='form-control'
+              className='form-control p-3 mb-3'
               id='validationCustom03'
               name='email'
               placeholder='Enter your Email'

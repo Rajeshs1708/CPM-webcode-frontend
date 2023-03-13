@@ -65,12 +65,12 @@ const Signin = ({ setLoginUser }) => {
     <>
       <div className='formSteps'>
         <form onSubmit={handleSubmit} style={{ width: '40vw' }}>
-          <h1 className='text-center p-3'>Signin</h1>
+          <h1 className='display-2 text-center p-3'>Signin</h1>
           <div className='form-outline mb-4'>
             <input
               type='email'
               id='form2Example1'
-              className='form-control'
+              className='form-control p-3'
               name='email'
               value={user.email}
               onChange={e => handleForm({ email: e.target.value })}
@@ -82,7 +82,7 @@ const Signin = ({ setLoginUser }) => {
             <input
               type='password'
               id='form2Example2'
-              className='form-control'
+              className='form-control p-3'
               name='password'
               value={user.password}
               onChange={e => handleForm({ password: e.target.value })}
@@ -91,7 +91,7 @@ const Signin = ({ setLoginUser }) => {
           </div>
 
           <div className='row mb-4'>
-            <div className='col'>
+            <div className='col text-center'>
               <NavLink to='/forgetPassword'>Forgot password?</NavLink>
             </div>
           </div>
